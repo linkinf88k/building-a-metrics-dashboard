@@ -69,17 +69,17 @@ Expose Grafana to the internet and then setup Prometheus as a data source. The f
 
 TROUBLE TICKET
 
-Name: Request Endpoint Star Failure Throw 405 Method Not Allowed
+Name: HTTP 500 Internal Server Error
 
-Date: May 5, 2024, 14:30 PM.
+Date: May 15 2024, 22:01:19.359.
 
-Subject: Backend cannot access MongoDB.
+Subject: Cannot get default home page
 
 Affected Area: Backend Service
 
 Severity: High
 
-The mongodb://example-mongodb-svc.default.svc.cluster.local:27017/example-mongodb throws a 405 error when the application accesses the /star endpoint after being port-forwarded. URL does not exist in the cluster. We need to make the MongoDB URL available to the Cluster.
+When we use the default url route to access the backend API with a get request. It produces an error and returns a 500 status code.
 
 ## Creating SLIs and SLOs
 
