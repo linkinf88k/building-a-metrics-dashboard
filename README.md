@@ -81,6 +81,8 @@ Severity: High
 
 When we use the default url route to access the backend API with a get request. It produces an error and returns a 500 status code.
 
+![Homepage 500](./answer-img/homepage-error.png)
+
 ## Creating SLIs and SLOs
 
 - Uptime. SLI: Uptime of the application availability per month. SLO: Uptime of the application - 99.95%.
