@@ -22,7 +22,7 @@ Expose Grafana to the internet and then setup Prometheus as a data source. The f
 
 ## Create a Basic Dashboard
 
-_TODO:_ Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
+![Grafana dashboard shows prometheus](answer-img/data-source-prometheus.png)
 
 ## Describe SLO/SLI
 
@@ -41,42 +41,61 @@ _TODO:_ Create a dashboard in Grafana that shows Prometheus as a source. Take a 
 
 ## Create a Dashboard to measure our SLIs
 
-_TODO:_ Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
+![Grafana dashboard measure our SLIs](answer-img/metric-dashboard.png)
 
 ## Tracing our Flask App
 
-_TODO:_ We will create a Jaeger span to measure the processes on the backend. Once you fill in the span, provide a screenshot of it here. Also provide a (screenshot) sample Python file containing a trace and span code used to perform Jaeger traces on the backend service.
+#### Frontend app.py
+
+![Flask App Trace Frontend](./answer-img/frontend-app.png)
+
+#### Bacnend app.py
+
+![Flask App Trace Frontend](./answer-img/frontend-app.png)
+
+#### Jaeger UI
+
+![Jaeger Trace](./answer-img/backend-jaeger.png)
+
+#### Grafana Jaeger Trace
+
+![Grafana Jaeger Trace](./answer-img/grafana-jaeger.png)
 
 ## Jaeger in Dashboards
 
-_TODO:_ Now that the trace is running, let's add the metric to our current Grafana dashboard. Once this is completed, provide a screenshot of it here.
+![Grafana Jaeger in dashboard](./answer-img/jaeger-dashboard.png)
 
 ## Report Error
 
-_TODO:_ Using the template below, write a trouble ticket for the developers, to explain the errors that you are seeing (400, 500, latency) and to let them know the file that is causing the issue also include a screenshot of the tracer span to demonstrate how we can user a tracer to locate errors easily.
-
 TROUBLE TICKET
 
-Name:
+Name: Request endpoint star fail throw 405 Method Not Allowed
 
-Date:
+Date: May 05 2024, 14:30 PM
 
-Subject:
+Subject: Backend can't acces MongoDB
 
-Affected Area:
+Affected Area: Backend Service
 
-Severity:
+Severity: High
 
-Description:
+Description: As we port-forwarding the application accessing /star endpoint, it throw 405 error which is caused by the mongodb://example-mongodb-svc.default.svc.cluster.local:27017/example-mongodb URL is not exist in the cluster. We need to make the MongoDB URL available for the cluster.
 
 ## Creating SLIs and SLOs
 
-_TODO:_ We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name four SLIs that you would use to measure the success of this SLO.
+- Uptime. SLI: Uptime of the application availability per month. SLO: Uptime of the application - 99.95%.
+- Latency. SLI: Average response time per 30 seconds periods per month. SLO: Average response time per 30 sec periods per month less than 100ms. SLI: Percentage of request count which complete in less than 100ms. SLO: 99% of request count will complete in less than 100ms.
+- Errors. SLI: HTTP 500 errors % rate per 1 minute ranges. SLO: HTTP 500 errors % rate per 1 minute is less than 1%.
+- Traffic. SLI: Total requests per minute. SLO: Total requests per minute is less than 1800.
 
 ## Building KPIs for our plan
 
-_TODO_: Now that we have our SLIs and SLOs, create a list of 2-3 KPIs to accurately measure these metrics as well as a description of why those KPIs were chosen. We will make a dashboard for this, but first write them down here.
+- Error Rate: This KPI was selected because more than 95% of all requests must be completed without errors. As a result, we will be able to track our application's error rate.
+- Uptime: This KPI was chosen since there must be at least 99% uptime every month. The uptime KPI enables us to correctly measure these variables.
+- Resource capacity: This KPI was chosen since CPU and RAM utilization should not surpass 90% per month. The Resource Capacity KPI enables us to monitor their utilization.
 
 ## Final Dashboard
 
-_TODO_: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.
+![Final dashboard 1](./answer-img/final-dashboard-1.png)
+
+![Final dashboard 2](./answer-img/final-dashboard-2.png)
