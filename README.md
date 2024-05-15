@@ -26,18 +26,18 @@ Expose Grafana to the internet and then setup Prometheus as a data source. The f
 
 ## Describe SLO/SLI
 
-- **SLOs** specify the level of performance or reliability a service should provide.
-- **SLIs** are metrics that measure the performance and reliability of a service or system.
+- **SLOs** define the level of performance or reliability that a service should offer.
+- **SLIs** are metrics used to assess the performance and reliability of a service or system.
 - For **request response time SLO**, SLIs might include average, maximum, and minimum response times, and the percentage of requests meeting the response time threshold.
-- For **monthly uptime SLO**, SLIs might include successful requests, failed requests, error codes, and total uptime.
+- For **monthly uptime SLO**, SLIs might comprise successful requests, failed requests, error codes, and overall uptime.
 
 ## Creating SLI metrics.
 
-- **Latency:** Measures time taken for request completion.
-- **Error rate:** Measures percentage of requests resulting in error.
-- **Availability:** Measures percentage of time the service is available.
-- **Throughput:** Measures number of requests per unit of time.
-- **Network capacity:** Measures resource utilization, such as CPU or memory
+- **Latency:** Measures the time it takes to complete a request.
+- **Error rate:** Calculates the percentage of requests that return an error.
+- **Availability:** Calculates the percentage of time the service is available.
+- **Throughput:** Indicates the number of requests per unit of time.
+- **Network capacity:** Determines resource consumption, such as CPU or memory.
 
 ## Create a Dashboard to measure our SLIs
 
@@ -69,17 +69,17 @@ Expose Grafana to the internet and then setup Prometheus as a data source. The f
 
 TROUBLE TICKET
 
-Name: Request endpoint star fail throw 405 Method Not Allowed
+Name: Request Endpoint Star Failure Throw 405 Method Not Allowed
 
-Date: May 05 2024, 14:30 PM
+Date: May 5, 2024, 14:30 PM.
 
-Subject: Backend can't acces MongoDB
+Subject: Backend cannot access MongoDB.
 
 Affected Area: Backend Service
 
 Severity: High
 
-Description: As we port-forwarding the application accessing /star endpoint, it throw 405 error which is caused by the mongodb://example-mongodb-svc.default.svc.cluster.local:27017/example-mongodb URL is not exist in the cluster. We need to make the MongoDB URL available for the cluster.
+The mongodb://example-mongodb-svc.default.svc.cluster.local:27017/example-mongodb throws a 405 error when the application accesses the /star endpoint after being port-forwarded. URL does not exist in the cluster. We need to make the MongoDB URL available to the Cluster.
 
 ## Creating SLIs and SLOs
 
@@ -99,3 +99,11 @@ Description: As we port-forwarding the application accessing /star endpoint, it 
 ![Final dashboard 1](./answer-img/final-dashboard-1.png)
 
 ![Final dashboard 2](./answer-img/final-dashboard-2.png)
+
+- Average Response Time: It is the average response time measured per unit time.
+- Error Responses: It shows the number of failed requests per month.
+- Successful Responses: It indicates the total successful requests per month.
+- Memory use: It represents the memory use of the Flask application.
+- Disk Usage: It represents the utilization of the disk drive.
+- CPU consumption: Indicates the CPU consumption of the Flask app deployment. Uptime: It represents the availability of each back-end and front-end service.
+- Server Uptime represents the uptime of each instance.
